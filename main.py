@@ -5,35 +5,70 @@ from Service.CustomerService import CustomerService
 Carss=CarService()
 Cuss=CustomerService()
 while True:
-    print("*************** <SERVICES> ***************")
+    print("                                                                ")
+    print( " *************** <WEAR TOME RENTAL SERVICES> *************** " )
+    print("                                                                ")
+    print("                      *********< W >*********** ")
+    print("                                                                ")
+    print("_____________GLOBAL TRANSPORT LIMITED CO.LTD PVT___________________")
+
+    print("_______________________________________________")
     print("Press 1 for CAR SERVICE !! ")
     print("Press 2 for CUSTOMER SERVICE !! ")
-    print("___________________________________________")
+    print("______________________________________________")
     ch1=int(input("Enter your choice "))
     if ch1==1:
-        print("Press 3 for Add  Cars !")
-        print("Press 4 for Display Cars !")
+        print("                                                   < CAR SERVICE >")
+        print("                                                                ")
+        print("_______________________________________________")
+        print("Press 1 for Add  Cars !")
+        print("Press 2 for Display Cars !")
+        print("Press 3 for Remove Car ! ")
+        print("Press 4 for search any Car !")
+        print("___________________________________________")
         ch2=int(input("Enter your Choice !! "))
-        if ch2==3:
+        if ch2==1:
             ob=Car()
-            print("____________________________________")
+            print("_______________________________________")
             ob.setCarno(input("Enter Car number : "))
             ob.setName(input("Enter Car Name :  "))
             ob.setSeater(int(input("How many seater you want : ")))
-            print("____________________________________")
+            print("_______________________________________")
             Carss.addCars(ob)
-        elif ch2==4:
+        elif ch2==2:
             Cars=Carss.displayCars()
+            print("\t \t CAR NO \t \t CAR NAME \t \t SEATER")
             for item in Cars:
-                print(f"{item.getCarno()}\t{item.getName()}\t{item.getSeater()}")
+                print(f"\t \t {item.getCarno()}\t \t{item.getName()} \t \t{item.getSeater()}")
+        elif ch2==3:
+            Cars=Carss.displayCars()
+            i=0
+            print("\t \t CAR NO \t \t CAR NAME \t \t SEATER")
+            for item in Cars:
+                print(f"{i}\t\t{item.getName()}\t\t{item.getCarno()}\t\t{item.getSeater()}")
+                i=i+1
+            index=int(input("\t Enter index to remove the car - "))
+            Carss.removeCar(index)
+            print("\t Car removed Successfully !! ")
+        elif ch2==4:
+            Num=input("Enter Car Number - ")
+            info=Carss.searchCar(Num)
+            if(info==None):
+                print("NO CAR FOUND !! ")
+            else:
+                print("\t \t CAR NO \t \t CAR NAME \t \t SEATER")
+                print(f"\t\t{info.getCarno()}\t\t{info.getName()}\t\t{info.getSeater()}")
     elif ch1==2:
-        print("                                                   < CUSTOMER SERVICE >")
+        print("                                                 < CUSTOMER SERVICE >")
+        print("                                                                ")
         print("_________________________________________________")
-        print("Press '5' for Add Customer's : ")
-        print("Press '6' for Display Customer's : ")
+        print("Press '1' for Add Customer's : ")
+        print("Press '2' for Display Customer's : ")
+        print("Press '3' for Remove any Customer ! ")
+        print("Press '4' for search a Customer !")
         print("_________________________________________________")
         ch3=int(input("Enter your choice : "))
-        if ch3==5:
+        if ch3==1:
             ob1=Customer()
             print("_________________________________________________")
             ob1.setName(input("Enter Customer Name :  "))
@@ -41,15 +76,30 @@ while True:
             ob1.setCity(input("Enter Customer's City  : "))
             print("_________________________________________________")
             Cuss.addCustomers(ob1)
-        elif ch3==6:
+        elif ch3==2:
             Data=Cuss.displayCustomers()
             print("___________________________________________________________")
+            print("                                                                ")
+            print("\t \t NAME \t \t CONTACT \t \t CITY")
             for item in Data:
-                print(f"{item.getName()}\t{item.getContact()}\t{item.getCity()}")
+                print(f"\t\t{item.getName}\t\t{item.getContact()}\t\t{item.getCity()}")
+            print("                                                                ")
             print("___________________________________________________________")
-
-
-
-
-
-
+        elif ch3 == 3:
+            Customers = Cuss.displayCustomers()
+            i = 0
+            print("\t \t NAME \t \t CONTACT \t \t CITY")
+            for item in Customers:
+                print(f"\t\t{i}\t{item.getName}\t\t{item.getContact()}\t\t{item.getCity()}")
+                i = i + 1
+            index = int(input("\t Enter index to remove the customer - "))
+            Cuss.removeCustomer(index)
+            print("\t Customer removed Successfully !! ")
+        elif ch3 == 4:
+            Name = input("Enter Customer Name - ")
+            info = Cuss.searchCustomer(Name)
+            if (info == None):
+                print("NO CUSTOMER FOUND !! ")
+            else:
+                print("\t \t NAME \t \t CONTACT \t \t CITY")
+                print(f"\t\t{info.getName}\t\t{info.getContact()}\t\t{info.getCity()}")
