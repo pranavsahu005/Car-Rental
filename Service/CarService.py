@@ -6,3 +6,11 @@ class CarService:
         self.__cars.append(car)
     def  displayCars(self):
         return self.__cars
+    def removeCar(self,index):
+        self.__cars.pop(index)
+    def searchCar(self,num):
+        for item in self.__cars:
+            if(num==item.getCarno()):
+                return item
+        return None
+
