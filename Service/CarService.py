@@ -14,3 +14,7 @@ class CarService:
                 return item
         return None
 
+    def getcarbyIndex(self, index):
+        return self.__cars[index]
+    def UpdateCar(self, index, update):
+        self.__cars[index] = update
