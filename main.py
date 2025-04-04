@@ -45,7 +45,7 @@ while True:
             i=0
             print("\t \t CAR NO \t \t CAR NAME \t \t SEATER")
             for item in Cars:
-                print(f"{i}\t\t{item.getName()}\t\t{item.getCarno()}\t\t{item.getSeater()}")
+                print(f"\t \t {item.getCarno()}\t \t{item.getName()} \t \t{item.getSeater()}")
                 i=i+1
             index=int(input("\t Enter index to remove the car - "))
             Carss.removeCar(index)
@@ -58,6 +58,31 @@ while True:
             else:
                 print("\t \t CAR NO \t \t CAR NAME \t \t SEATER")
                 print(f"\t\t{info.getCarno()}\t\t{info.getName()}\t\t{info.getSeater()}")
+        elif ch2==5:
+            data=cars.displayCars()
+            print("Car NO. \t\t Name \t\t Seater ")
+            i=0
+            for item in data:
+                print(f"\t \t {item.getCarno()}\t \t{item.getName()} \t \t{item.getSeater()}")
+                i=i+i
+            index=int(input("Enter Car index to update "))
+            if index>=0 and index<i:
+                Cars=cars.getcarbyIndex(index)
+                print("Press 1 for update Car Number : ")
+                print("Press 2 for update Car Name : ")
+                print("Press 3 for update Car Seater : ")
+                key = input("Enter New Car Number ")
+                if key==1:
+                    Cars.setCarno(input("Enter New Car Number: "))
+                    cars.updateCar(index,Cars)
+                elif key ==2:
+
+                    Cars.setName(input("Enter NEW car Name: "))
+                elif key == 3:
+                    Cars.setSeater(input("Enter NEW number of car seater: "))
+                    cars.updateCar(index,Cars)
+                else:
+                    print("Invalid Choice: ")
     elif ch1==2:
         print("                                                 < CUSTOMER SERVICE >")
         print("                                                                ")
